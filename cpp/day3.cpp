@@ -9,7 +9,7 @@
 #include <set>
 #include <utility>
 
-#include "utils.hpp"
+#include "./utils.hpp"
 
 void move(int* width, int* height, char c) {
     switch (c) {

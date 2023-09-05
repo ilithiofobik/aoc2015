@@ -6,7 +6,7 @@
 #include <vector>
 #include <algorithm>
 
-#include "utils.hpp"
+#include "./utils.hpp"
 
 int task1(const std::vector<std::vector<int>> &int_vectors) {
     int counter = 0;

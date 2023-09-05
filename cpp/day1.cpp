@@ -7,7 +7,7 @@
 #include <algorithm>
 #include <stdexcept>
 
-#include "utils.hpp"
+#include "./utils.hpp"
 
 int to_num(char c) {
     switch (c) {
