@@ -15,34 +15,37 @@ let move width height c =
   | _   -> failwith "Unknown character";;
 
 let task1 chars =
+  let trace = IntPairSet.singleton (0, 0) in
   let rec aux w h trace input =
   match input with 
   | [] -> trace
   | c::cs -> 
     let (nw, nh) = move w h c in 
-    aux nw nh ((nw, nh)::trace)  cs
+    let new_trace = IntPairSet.add (nw, nh) trace in
+    aux nw nh new_trace cs
   in
   chars
-  |> aux 0 0 [(0, 0)] 
-  |> IntPairSet.of_list 
+  |> aux 0 0 trace
   |> IntPairSet.cardinal
 ;;
 
 let task2 chars =
+  let trace = IntPairSet.singleton (0, 0) in
   let rec aux w h rw rh r trace input =
   match input with 
   | [] -> trace
   | c::cs -> 
     if r then
       let (nrw, nrh) = move rw rh c in 
-      aux w h nrw nrh (not r) ((nrw, nrh)::trace) cs
+      let new_trace = IntPairSet.add (nrw, nrh) trace in
+      aux w h nrw nrh (not r) new_trace cs
     else 
       let (nw, nh) = move w h c in 
-      aux nw nh rw rh (not r) ((nw, nh)::trace) cs
+      let new_trace = IntPairSet.add (nw, nh) trace in
+      aux nw nh rw rh (not r) new_trace cs
   in
   chars
-  |> aux 0 0 0 0 true [(0, 0)] 
-  |> IntPairSet.of_list 
+  |> aux 0 0 0 0 true trace
   |> IntPairSet.cardinal
 ;;
 

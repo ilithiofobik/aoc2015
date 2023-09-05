@@ -61,4 +61,4 @@ _opam/
 *.out
 *.app
 
-./vscode
+.vscode/
