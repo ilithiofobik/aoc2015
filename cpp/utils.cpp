@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-#include "./utils.hpp"
+#include "utils.hpp"
 
 std::string ltrim(const std::string &s) {
     size_t start = s.find_first_not_of(WHITESPACE);
