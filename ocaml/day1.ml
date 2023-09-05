@@ -22,6 +22,6 @@ let task2 s =
 ;;
 
 
-let instructions = Utils.file_to_string ("day1.txt") in
-let final_floor = task2 instructions in
+let instructions = Utils.file_to_string ("../input/day1.txt") in
+let final_floor = task1 instructions in
 Printf.printf "%d" final_floor
