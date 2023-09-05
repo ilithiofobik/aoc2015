@@ -39,8 +39,14 @@ int task2(const std::string &s) {
 int main() {
     std::string s = file_to_string("../input/day1.txt");
 
-    assert(task1(s) == 138);
-    assert(task2(s) == 1771);
+    int result1 = task1(s);
+    int result2 = task2(s);
+
+    printf("Task1: %d\n", result1);
+    printf("Task2: %d\n", result2);
+
+    assert(result1 == 138);
+    assert(result2 == 1771);
 
     return 0;
 }
