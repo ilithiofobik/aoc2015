@@ -1,6 +1,11 @@
 // Copyright 2023 Wojciech Sek
 
 #include <cassert>
+#include <numeric>
+#include <string>
+#include <vector>
+#include <algorithm>
+
 #include "utils.hpp"
 
 int to_num(char c) {
@@ -12,13 +17,9 @@ int to_num(char c) {
 }
 
 int task1(const std::string &s) {
-    int counter = 0;
-
-    for (char c : s) {
-        counter += to_num(c);
-    }
-
-    return counter;
+    std::vector<char> iter(s.begin(), s.end());
+    std::transform(iter.begin(), iter.end(), iter.begin(), to_num);
+    return std::accumulate(iter.begin(), iter.end(), 0);
 }
 
 int task2(const std::string &s) {
