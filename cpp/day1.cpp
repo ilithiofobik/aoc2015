@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <stdexcept>
 
 #include "utils.hpp"
 
@@ -12,7 +13,8 @@ int to_num(char c) {
     switch (c) {
         case '(': return 1;
         case ')': return -1;
-        default: return 0;
+        default:
+            throw std::invalid_argument("Input must consist of '(' and ')'");
     }
 }
 
