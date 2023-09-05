@@ -60,3 +60,5 @@ _opam/
 *.exe
 *.out
 *.app
+
+./vscode
