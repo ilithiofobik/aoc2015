@@ -34,7 +34,7 @@ let task2 s =
   |> Utils.list_sum
 ;;
 
-let instructions = Utils.file_to_list ("../input/day2.txt") in
+let instructions = Utils.file_to_lines ("../input/day2.txt") in
 let result1 = task1 instructions in
 let result2 = task2 instructions in
   Printf.printf "Task1: %d\n" result1;

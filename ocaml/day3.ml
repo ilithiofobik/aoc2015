@@ -1,8 +1,8 @@
-module IntPair = struct 
-  type t = int * int
-  (* use Pervasives compare *)
-  let compare = compare
-end
+module IntPair = 
+  struct 
+    type t = int * int
+    let compare = compare
+  end
 
 module IntPairSet = Set.Make(IntPair)
 
@@ -14,7 +14,7 @@ let move width height c =
   | '<' -> (width - 1), height
   | _   -> failwith "Unknown character";;
 
-let task1 s =
+let task1 chars =
   let rec aux w h trace input =
   match input with 
   | [] -> trace
@@ -22,15 +22,13 @@ let task1 s =
     let (nw, nh) = move w h c in 
     aux nw nh ((nw, nh)::trace)  cs
   in
-  s 
-  |> String.to_seq
-  |> List.of_seq 
+  chars
   |> aux 0 0 [(0, 0)] 
   |> IntPairSet.of_list 
   |> IntPairSet.cardinal
 ;;
 
-let task2 s =
+let task2 chars =
   let rec aux w h rw rh r trace input =
   match input with 
   | [] -> trace
@@ -42,17 +40,15 @@ let task2 s =
       let (nw, nh) = move w h c in 
       aux nw nh rw rh (not r) ((nw, nh)::trace) cs
   in
-  s 
-  |> String.to_seq
-  |> List.of_seq 
+  chars
   |> aux 0 0 0 0 true [(0, 0)] 
   |> IntPairSet.of_list 
   |> IntPairSet.cardinal
 ;;
 
-let input = Utils.file_to_string ("../input/day3.txt") in
-let result1 = task1 input in
-let result2 = task2 input in
+let chars = Utils.file_to_chars ("../input/day3.txt") in
+let result1 = task1 chars in
+let result2 = task2 chars in
   Printf.printf "Task1: %d\n" result1;
   Printf.printf "Task2: %d\n" result2;
   assert (result1 = 2572);

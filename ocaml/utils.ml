@@ -1,4 +1,4 @@
-let file_to_list filename =
+let file_to_lines filename =
   let channel = open_in filename in
   let rec read_lines lines =
     try
@@ -13,7 +13,13 @@ let file_to_list filename =
 ;;
 
 let file_to_string filename =
-  filename |> file_to_list |> String.concat ""
+  filename |> file_to_lines |> String.concat ""
+;;
+
+let file_to_chars filename =
+  file_to_string filename
+  |> String.to_seq 
+  |> List.of_seq
 ;;
 
 let list_sum list =
